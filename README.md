@@ -1,4 +1,4 @@
 # uscart
 This is oauth sample application
 
-## Demo: https://uscart.herokuapp.com.
+## Demo: https://usrstory.herokuapp.com.
