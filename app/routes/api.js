@@ -27,13 +27,23 @@ module.exports = function(app, express, io) {
 	var api = express.Router();
 
 	api.get('/all_stories', function(req, res) {
-		
+
+/*		Story.find().select('content').populate('content').exec(function(err, stories) {
+			if (err) {
+				return res.send(err);
+			} else {
+				res.json(stories);
+			}
+		});*/
+
 		Story.find({}, function(err, stories) {
 			if(err) {
 				res.send(err);
 				return;
 			}
 			res.json(stories);
+		}, function (err, smth){
+			res.send(err);
 		});
 	});
 
@@ -75,7 +85,7 @@ module.exports = function(app, express, io) {
 
 	api.post('/login', function(req, res) {
 
-		User.findOne({ 
+		User.findOne({
 			username: req.body.username
 		}).select('name username password').exec(function(err, user) {
 
@@ -110,7 +120,7 @@ module.exports = function(app, express, io) {
 
 		console.log("Somebody just came to our app!");
 
-		var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+		var token = req.body['token'] || req.params['token'] || req.query['token'] || req.headers['x-access-token'];
 
 		// check if token exist
 		if(token) {
