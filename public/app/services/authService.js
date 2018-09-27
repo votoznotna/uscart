@@ -9,15 +9,20 @@ angular.module('authService', [])
 
 
 	authFactory.login = function(username, password) {
-
-		return $http.post('/api/login', {
+      var defer = $q.defer();
+		$http.post('/api/login', {
 			username: username,
 			password: password
 		})
-		.success(function(data) {
-			AuthToken.setToken(data.token);
-			return data;
-		})
+		.then(function(rsp) {
+			AuthToken.setToken(rsp.data.token);
+         defer.resolve(rsp.data);
+
+		}, function(rsp) {
+         defer.reject(rsp);
+      })
+
+      return defer.promise;
 	}
 
 	authFactory.logout = function() {

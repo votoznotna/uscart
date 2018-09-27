@@ -3,8 +3,9 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var config = require('./config');
 var mongoose = require('mongoose');
+var cors = require('cors');
 var app = express();
-
+app.use(cors());
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
