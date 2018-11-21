@@ -1,4 +1,4 @@
 # User Story
 This is oauth sample application
 
-## Demo: https://usrstory.herokuapp.com.
+## Demo: https://devmernstack.herokuapp.com.
