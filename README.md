@@ -1,4 +1,4 @@
 # User Story
 This is oauth sample application
 
-## Demo: https://devmernstack.herokuapp.com.
+Currently Heroku link is missing because of 5 apps limitaion for free usage.
